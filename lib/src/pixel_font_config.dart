@@ -9,68 +9,20 @@ class PixelFontConfig {
   final Color backgroundColor;
   final int threshold;
   final bool useAntiAliasing;
+  final int? letterPixelWidth; // 글자당 픽셀 너비 (null이면 자동)
+  final int? letterPixelHeight; // 글자당 픽셀 높이 (null이면 자동)
 
   const PixelFontConfig({
     this.fontSize = 16.0,
     this.fontFamily = 'monospace',
-    this.fontWeight = FontWeight.normal,
+    this.fontWeight = FontWeight.w100,
     this.textColor = Colors.black,
     this.backgroundColor = Colors.transparent,
-    this.threshold = 128,
+    this.threshold = 80,
     this.useAntiAliasing = false,
+    this.letterPixelWidth,
+    this.letterPixelHeight,
   });
-
-  /// 기본 모노스페이스 폰트 설정
-  factory PixelFontConfig.monospace({
-    double fontSize = 16.0,
-    Color textColor = Colors.black,
-    Color backgroundColor = Colors.transparent,
-    int threshold = 128,
-  }) {
-    return PixelFontConfig(
-      fontSize: fontSize,
-      fontFamily: 'monospace',
-      fontWeight: FontWeight.normal,
-      textColor: textColor,
-      backgroundColor: backgroundColor,
-      threshold: threshold,
-      useAntiAliasing: false,
-    );
-  }
-
-  /// 작은 크기 픽셀 폰트 설정
-  factory PixelFontConfig.small({
-    Color textColor = Colors.black,
-    Color backgroundColor = Colors.transparent,
-    int threshold = 128,
-  }) {
-    return PixelFontConfig(
-      fontSize: 12.0,
-      fontFamily: 'monospace',
-      fontWeight: FontWeight.bold,
-      textColor: textColor,
-      backgroundColor: backgroundColor,
-      threshold: threshold,
-      useAntiAliasing: false,
-    );
-  }
-
-  /// 큰 크기 픽셀 폰트 설정
-  factory PixelFontConfig.large({
-    Color textColor = Colors.black,
-    Color backgroundColor = Colors.transparent,
-    int threshold = 128,
-  }) {
-    return PixelFontConfig(
-      fontSize: 24.0,
-      fontFamily: 'monospace',
-      fontWeight: FontWeight.bold,
-      textColor: textColor,
-      backgroundColor: backgroundColor,
-      threshold: threshold,
-      useAntiAliasing: false,
-    );
-  }
 
   /// TextStyle로 변환
   TextStyle toTextStyle() {
@@ -92,6 +44,8 @@ class PixelFontConfig {
     Color? backgroundColor,
     int? threshold,
     bool? useAntiAliasing,
+    int? letterPixelWidth,
+    int? letterPixelHeight,
   }) {
     return PixelFontConfig(
       fontSize: fontSize ?? this.fontSize,
@@ -101,6 +55,8 @@ class PixelFontConfig {
       backgroundColor: backgroundColor ?? this.backgroundColor,
       threshold: threshold ?? this.threshold,
       useAntiAliasing: useAntiAliasing ?? this.useAntiAliasing,
+      letterPixelWidth: letterPixelWidth ?? this.letterPixelWidth,
+      letterPixelHeight: letterPixelHeight ?? this.letterPixelHeight,
     );
   }
 }

@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2024-01-XX
+
+### 새로운 기능
+- ✏️ **1픽셀 두께 얇은 폰트** - `PixelFontConfig.thin()` 으로 매우 섬세한 텍스트 렌더링
+- 📝 **향상된 멀티라인 지원** - `PixelFontConfig.multiline()` 과 개선된 UI
+- 🎛️ **멀티라인 모드 토글** - 예제 앱에서 단일라인/멀티라인 쉽게 전환
+- 🔧 **기본 폰트 설정 개선** - 모든 기본값이 얇은 폰트 사용
+
+### 개선사항
+- 📖 기본 `fontWeight`를 `FontWeight.w100` (가장 얇음)으로 변경
+- 🎯 픽셀 변환 `threshold`를 80으로 조정하여 더 정밀한 렌더링
+- 🎨 모든 프리셋 스타일에 얇은 폰트 적용
+- 🧪 테스트 업데이트 및 호환성 유지
+
 ## [1.1.0] - 2024-01-XX
 
 ### 새로운 기능

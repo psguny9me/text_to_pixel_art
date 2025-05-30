@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:text_to_pixel_art/text_to_pixel_art.dart';
@@ -21,7 +22,8 @@ void main() {
       // Assert
       expect(config.fontSize, equals(16.0));
       expect(config.fontFamily, equals('monospace'));
-      expect(config.threshold, equals(128));
+      expect(config.fontWeight, equals(FontWeight.w100));
+      expect(config.threshold, equals(80));
       expect(config.useAntiAliasing, isFalse);
     });
 
@@ -37,14 +39,11 @@ void main() {
 
     test('should create factory configurations correctly', () {
       // Arrange & Act
-      final PixelFontConfig smallConfig = PixelFontConfig.small();
-      final PixelFontConfig largeConfig = PixelFontConfig.large();
+
       final PixelArtStyle largeStyle = PixelArtStyle.large();
       final PixelArtStyle smallStyle = PixelArtStyle.small();
 
       // Assert
-      expect(smallConfig.fontSize, equals(12.0));
-      expect(largeConfig.fontSize, equals(24.0));
       expect(largeStyle.pixelSize, equals(8.0));
       expect(smallStyle.pixelSize, equals(2.0));
     });

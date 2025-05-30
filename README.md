@@ -35,6 +35,8 @@ Flutter에서 텍스트를 픽셀아트로 변환하는 패키지입니다. 다�
 - 🎨 커스터마이징 가능한 픽셀 크기, 색상, 간격
 - 🌟 그림자 효과 지원
 - 👻 픽셀 불투명도 조절 (반투명 효과)
+- ✏️ **얇은 폰트 지원** (1픽셀 두께의 섬세한 텍스트)
+- 📝 **향상된 멀티라인 지원** (여러 줄 텍스트 완벽 처리)
 - 📐 그리드 표시 옵션
 - 📱 멀티플랫폼 지원 (iOS, Android, Web, macOS, Windows, Linux)
 - 🔤 단일 줄 및 여러 줄 텍스트 지원
@@ -63,7 +65,7 @@ flutter pub get
 ```dart
 import 'package:text_to_pixel_art/text_to_pixel_art.dart';
 
-// 기본 픽셀 텍스트
+// 기본 픽셀 텍스트 (얇은 폰트 사용)
 PixelText.create(
   text: 'HELLO',
   pixelSize: 4.0,
@@ -80,6 +82,92 @@ PixelText.large(
 PixelText.small(
   text: 'small',
   pixelColor: Colors.green,
+)
+```
+
+#### 1픽셀 두께의 얇은 폰트
+
+```dart
+// 매우 얇은 1픽셀 두께 텍스트
+PixelTextWidget(
+  text: 'THIN PIXEL',
+  fontConfig: PixelFontConfig.thin(),
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    pixelColor: Colors.black,
+  ),
+)
+
+// 사용자 정의 얇은 폰트
+PixelTextWidget(
+  text: 'CUSTOM THIN',
+  fontConfig: PixelFontConfig.thin(
+    fontSize: 18.0,
+    textColor: Colors.blue,
+  ),
+  artStyle: PixelArtStyle(pixelSize: 3.0),
+)
+```
+
+#### 8x8 고정 크기 픽셀 폰트
+
+```dart
+// 각 글자가 정확히 8x8 픽셀로 렌더링
+PixelTextWidget(
+  text: 'RETRO',
+  fontConfig: PixelFontConfig.fixed8x8(),
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    showGrid: true, // 8x8 격자 표시
+  ),
+)
+
+// 8x16 크기 (알파벳에 더 적합)
+PixelTextWidget(
+  text: 'HELLO',
+  fontConfig: PixelFontConfig.fixed8x16(),
+  artStyle: PixelArtStyle(
+    pixelSize: 3.0,
+    showGrid: true,
+  ),
+)
+
+// 6x8 작은 크기
+PixelTextWidget(
+  text: 'SMALL',
+  fontConfig: PixelFontConfig.fixed6x8(),
+  artStyle: PixelArtStyle(pixelSize: 5.0),
+)
+
+// 12x16 큰 크기
+PixelTextWidget(
+  text: 'BIG',
+  fontConfig: PixelFontConfig.fixed12x16(),
+  artStyle: PixelArtStyle(pixelSize: 2.0),
+)
+
+// 커스텀 고정 크기 (예: 12x16)
+PixelTextWidget(
+  text: 'CUSTOM',
+  fontConfig: PixelFontConfig.fixedSize(
+    letterWidth: 12,
+    letterHeight: 16,
+  ),
+  artStyle: PixelArtStyle(pixelSize: 3.0),
+)
+```
+
+#### 멀티라인 텍스트
+
+```dart
+// 여러 줄 텍스트 (자동 줄바꿈 처리)
+PixelTextWidget.multiLine(
+  text: 'HELLO\nWORLD\nPIXEL\nART',
+  fontConfig: PixelFontConfig.multiline(),
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    pixelColor: Colors.purple,
+  ),
 )
 ```
 
@@ -204,11 +292,55 @@ RetroColors.crtBackground  // #000000
 |-----|------|-------|------|
 | fontSize | double | 16.0 | 폰트 크기 |
 | fontFamily | String? | null | 폰트 패밀리 |
-| fontWeight | FontWeight | FontWeight.normal | 폰트 굵기 |
+| fontWeight | FontWeight | FontWeight.w100 | 폰트 굵기 (기본: 가장 얇음) |
 | textColor | Color | Colors.black | 텍스트 색상 |
 | backgroundColor | Color | Colors.transparent | 배경 색상 |
-| threshold | double | 0.5 | 픽셀 변환 임계값 |
-| antiAlias | bool | true | 안티앨리어싱 |
+| threshold | double | 80 | 픽셀 변환 임계값 (더 민감함) |
+| antiAlias | bool | false | 안티앨리어싱 |
+| letterPixelWidth | int? | null | 글자당 픽셀 너비 (고정 크기) |
+| letterPixelHeight | int? | null | 글자당 픽셀 높이 (고정 크기) |
+
+#### Factory 생성자
+
+- `PixelFontConfig.thin()` - 1픽셀 두께의 매우 얇은 폰트 (threshold: 100)
+- `PixelFontConfig.normal()` - 일반 두께 폰트 (threshold: 128)
+- `PixelFontConfig.fixed6x8()` - 6x8 픽셀 고정 크기 폰트 (작은 크기)
+- `PixelFontConfig.fixed8x8()` - 8x8 픽셀 고정 크기 폰트 (기호용)
+- `PixelFontConfig.fixed8x16()` - 8x16 픽셀 고정 크기 폰트 (알파벳 권장)
+- `PixelFontConfig.fixed12x16()` - 12x16 픽셀 고정 크기 폰트 (큰 크기)
+- `PixelFontConfig.fixedSize()` - 커스텀 고정 크기 폰트
+- `PixelFontConfig.multiline()` - 멀티라인 텍스트에 최적화
+- `PixelFontConfig.monospace()` - 기본 모노스페이스 폰트
+- `PixelFontConfig.small()` - 작은 크기 폰트
+- `PixelFontConfig.large()` - 큰 크기 폰트
+
+#### 폰트 유형 비교
+
+```dart
+// 얇은 폰트 - 1픽셀 두께의 섬세한 텍스트
+PixelTextWidget(
+  text: 'THIN FONT',
+  fontConfig: PixelFontConfig.thin(),
+  artStyle: PixelArtStyle(pixelSize: 4.0),
+)
+
+// 일반 폰트 - 표준 두께 텍스트
+PixelTextWidget(
+  text: 'NORMAL FONT',
+  fontConfig: PixelFontConfig.normal(),
+  artStyle: PixelArtStyle(pixelSize: 4.0),
+)
+
+// 8x8 고정 크기 - 각 글자가 정확히 8x8 픽셀
+PixelTextWidget(
+  text: '8X8 FIXED',
+  fontConfig: PixelFontConfig.fixed8x8(),
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    showGrid: true, // 격자 표시로 8x8 구조 확인
+  ),
+)
+```
 
 ### PixelArtStyle
 

@@ -217,6 +217,8 @@ class PixelText {
         fontSize: fontSize,
         textColor: pixelColor,
         backgroundColor: backgroundColor,
+        fontWeight: FontWeight.w100,
+        threshold: 80,
       ),
       artStyle: PixelArtStyle(
         pixelSize: pixelSize,
@@ -236,14 +238,19 @@ class PixelText {
   }) {
     return PixelTextWidget(
       text: text,
-      fontConfig: PixelFontConfig.large(
+      fontConfig: PixelFontConfig(
+        fontSize: 24.0,
         textColor: pixelColor,
         backgroundColor: backgroundColor,
+        fontWeight: FontWeight.w100,
+        threshold: 80,
       ),
-      artStyle: PixelArtStyle.large(
+      artStyle: PixelArtStyle(
+        pixelSize: 8.0,
         pixelColor: pixelColor,
         backgroundColor: backgroundColor,
-      ).copyWith(showGrid: showGrid),
+        showGrid: showGrid,
+      ),
     );
   }
 
@@ -256,14 +263,19 @@ class PixelText {
   }) {
     return PixelTextWidget(
       text: text,
-      fontConfig: PixelFontConfig.small(
+      fontConfig: PixelFontConfig(
+        fontSize: 12.0,
         textColor: pixelColor,
         backgroundColor: backgroundColor,
+        fontWeight: FontWeight.w100,
+        threshold: 80,
       ),
-      artStyle: PixelArtStyle.small(
+      artStyle: PixelArtStyle(
+        pixelSize: 2.0,
         pixelColor: pixelColor,
         backgroundColor: backgroundColor,
-      ).copyWith(showGrid: showGrid),
+        showGrid: showGrid,
+      ),
     );
   }
 }
