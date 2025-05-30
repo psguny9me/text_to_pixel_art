@@ -1,8 +1,10 @@
 name: text_to_pixel_art
-description: A Flutter package that converts text to pixel art using font rendering and matrix conversion.
-version: 0.1.0
-homepage: https://github.com/your-username/text_to_pixel_art
-repository: https://github.com/your-username/text_to_pixel_art
+description: A Flutter package that converts text to pixel art with retro styling. Supports fixed-size fonts, customizable pixel effects, shadows, Game Boy LCD style, and multi-platform compatibility.
+version: 1.0.0
+homepage: https://github.com/psguny9me/text_to_pixel_art
+repository: https://github.com/psguny9me/text_to_pixel_art
+documentation: https://github.com/psguny9me/text_to_pixel_art#readme
+issue_tracker: https://github.com/psguny9me/text_to_pixel_art/issues
 
 environment:
   sdk: ^3.6.0

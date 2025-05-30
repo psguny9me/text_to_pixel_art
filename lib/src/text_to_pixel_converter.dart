@@ -159,47 +159,6 @@ class TextToPixelConverter {
     );
   }
 
-  /// 매트릭스를 지정된 크기로 다운샘플링
-  static PixelMatrix _downsampleMatrix(
-    PixelMatrix source,
-    int targetWidth,
-    int targetHeight,
-  ) {
-    final PixelMatrix target = PixelMatrix.empty(targetWidth, targetHeight);
-
-    final double scaleX = source.width / targetWidth;
-    final double scaleY = source.height / targetHeight;
-
-    for (int y = 0; y < targetHeight; y++) {
-      for (int x = 0; x < targetWidth; x++) {
-        // 블록 영역의 픽셀 밀도 계산
-        final int startX = (x * scaleX).floor();
-        final int endX = ((x + 1) * scaleX).ceil().clamp(0, source.width);
-        final int startY = (y * scaleY).floor();
-        final int endY = ((y + 1) * scaleY).ceil().clamp(0, source.height);
-
-        int pixelCount = 0;
-        int totalPixels = 0;
-
-        for (int sy = startY; sy < endY; sy++) {
-          for (int sx = startX; sx < endX; sx++) {
-            if (source.getPixel(sx, sy)) {
-              pixelCount++;
-            }
-            totalPixels++;
-          }
-        }
-
-        // 픽셀 밀도가 30% 이상이면 픽셀 설정
-        final bool shouldSetPixel =
-            totalPixels > 0 && (pixelCount / totalPixels) > 0.3;
-        target.setPixel(x, y, shouldSetPixel);
-      }
-    }
-
-    return target;
-  }
-
   /// 동적 크기로 텍스트를 픽셀 매트릭스로 변환 (기존 방식)
   static Future<PixelMatrix> _convertTextToDynamicSizePixelMatrix(
     String text,
