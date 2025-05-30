@@ -5,101 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.2.0] - 2024-01-XX
-
-### 새로운 기능
-- ✏️ **1픽셀 두께 얇은 폰트** - `PixelFontConfig.thin()` 으로 매우 섬세한 텍스트 렌더링
-- 📝 **향상된 멀티라인 지원** - `PixelFontConfig.multiline()` 과 개선된 UI
-- 🎛️ **멀티라인 모드 토글** - 예제 앱에서 단일라인/멀티라인 쉽게 전환
-- 🔧 **기본 폰트 설정 개선** - 모든 기본값이 얇은 폰트 사용
-
-### 개선사항
-- 📖 기본 `fontWeight`를 `FontWeight.w100` (가장 얇음)으로 변경
-- 🎯 픽셀 변환 `threshold`를 80으로 조정하여 더 정밀한 렌더링
-- 🎨 모든 프리셋 스타일에 얇은 폰트 적용
-- 🧪 테스트 업데이트 및 호환성 유지
-
-## [1.1.0] - 2024-01-XX
-
-### 새로운 기능
-- ✨ **픽셀 불투명도 조절** - `pixelOpacity` 속성으로 반투명 효과 구현
-- 🎨 **새로운 반투명 스타일** 추가:
-  - `PixelArtStyle.translucent()` - 기본 반투명 스타일
-  - `PixelArtStyle.glass()` - 글래스 효과 스타일
-  - `PixelArtStyle.hologram()` - 홀로그램 효과 스타일
-- 🔧 **향상된 예제 앱**:
-  - 불투명도 조절 슬라이더 추가
-  - 불투명도 효과 갤러리 섹션 추가
-  - 체크무늬 배경으로 반투명 효과 시각화
-
-### 개선사항
-- 📖 문서 업데이트 및 새로운 기능 설명 추가
-- 🎮 예제 앱에서 반투명 효과를 더 잘 보여주는 체크무늬 배경 구현
-
 ## [1.0.0] - 2025-05-30
 
-### 첫 번째 안정 버전 출시! 🎉
+### 첫 번째 안정 버전 출시! 🎉 / First Stable Release! 🎉
 
 이 버전은 텍스트를 픽셀아트로 변환하는 완전한 기능을 제공합니다.
+This version provides complete functionality for converting text to pixel art.
 
-### 주요 기능
-- ✨ **텍스트를 픽셀아트로 변환** - 고급 폰트 렌더링과 매트릭스 변환
-- 🎮 **게임보이 LCD 스타일** - 도트 매트릭스 효과와 레트로 색상
-- 📐 **고정 크기 폰트 지원** - 정확한 픽셀 크기 제어 (8x8, 8x16 등)
-- 🎨 **완전 커스터마이징** - 픽셀 크기, 색상, 간격, 불투명도 조절
-- 🌟 **그림자 효과** - 깊이감 있는 픽셀아트 생성
-- 📝 **멀티라인 지원** - 여러 줄 텍스트 완벽 처리
-- 📱 **멀티플랫폼** - iOS, Android, Web, macOS, Windows, Linux 지원
+### 주요 기능 / Key Features
+- ✨ **텍스트를 픽셀아트로 변환** / **Text to Pixel Art Conversion** - 고급 폰트 렌더링과 매트릭스 변환 / Advanced font rendering and matrix conversion
+- 🎮 **게임보이 LCD 스타일** / **Game Boy LCD Style** - 도트 매트릭스 효과와 레트로 색상 / Dot matrix effects and retro colors
+- 📐 **고정 크기 폰트 지원** / **Fixed-size Font Support** - 정확한 픽셀 크기 제어 (8x8, 8x16 등) / Precise pixel size control (8x8, 8x16, etc.)
+- 🎨 **완전 커스터마이징** / **Full Customization** - 픽셀 크기, 색상, 간격, 불투명도 조절 / Pixel size, color, spacing, opacity control
+- 🌟 **그림자 효과** / **Shadow Effects** - 깊이감 있는 픽셀아트 생성 / Create depth in pixel art
+- 📝 **멀티라인 지원** / **Multiline Support** - 여러 줄 텍스트 완벽 처리 / Perfect multi-line text handling
+- 📱 **멀티플랫폼** / **Multi-platform** - iOS, Android, Web, macOS, Windows, Linux 지원 / Support for all platforms
 
-### 핵심 클래스
-- `PixelTextWidget` - 메인 픽셀아트 텍스트 위젯
-- `PixelFontConfig` - 폰트 설정 관리
-- `PixelArtStyle` - 픽셀아트 스타일 설정
-- `TextToPixelConverter` - 텍스트 변환 엔진
-- `PixelMatrix` - 픽셀 데이터 관리
+### 핵심 클래스 / Core Classes
+- `PixelTextWidget` - 메인 픽셀아트 텍스트 위젯 / Main pixel art text widget
+- `PixelFontConfig` - 폰트 설정 관리 / Font configuration management
+- `PixelArtStyle` - 픽셀아트 스타일 설정 / Pixel art style configuration
+- `TextToPixelConverter` - 텍스트 변환 엔진 / Text conversion engine
+- `PixelMatrix` - 픽셀 데이터 관리 / Pixel data management
 
-### 스타일링 옵션
-- 픽셀 크기 및 간격 조절
-- 투명도 및 그림자 효과
-- 그리드 표시 옵션
-- 커스텀 색상 및 배경
+### 스타일링 옵션 / Styling Options
+- 픽셀 크기 및 간격 조절 / Pixel size and spacing control
+- 투명도 및 그림자 효과 / Transparency and shadow effects
+- 그리드 표시 옵션 / Grid display options
+- 커스텀 색상 및 배경 / Custom colors and backgrounds
 
-### 예제 및 문서
-- 🎛️ **인터랙티브 예제 앱** - 모든 설정을 실시간으로 조절
-- 📖 **상세한 문서** - 설치부터 고급 사용법까지
-- 🎮 **게임보이 스타일 데모** - 레트로 감성의 완성형 예제
-
-## [0.1.0] - 2025-05-29
-
-### 초기 릴리스
-- 📝 텍스트를 픽셀아트로 변환하는 기본 기능
-- 🎨 픽셀 크기, 색상 커스터마이징
-- 📐 그리드 표시 옵션
-- 🔤 단일 줄 및 여러 줄 텍스트 지원
-- ⚙️ 폰트 설정 (크기, 패밀리, 굵기, 임계값)
-- 📱 기본 Flutter 위젯으로 구현
-
-### Added
-- 초기 버전 릴리스
-- `PixelMatrix` 클래스 - 픽셀 매트릭스 관리
-- `PixelFontConfig` 클래스 - 폰트 설정 관리
-- `PixelArtStyle` 클래스 - 픽셀아트 스타일 관리
-- `TextToPixelConverter` 클래스 - 텍스트를 픽셀로 변환
-- `PixelArtPainter` 클래스 - 픽셀아트 렌더링
-- `PixelTextWidget` 위젯 - 메인 픽셀 텍스트 위젯
-- `PixelText` 유틸리티 클래스 - 간편한 픽셀 텍스트 생성
-- 단일 줄 및 여러 줄 텍스트 지원
-- 그리드 표시 옵션
-- 다양한 픽셀 크기 및 색상 지원
-- 커스텀 폰트 설정 지원
-- 포괄적인 단위 테스트
-- 예제 앱
-- 완전한 API 문서
-
-### Features
-- 📝 텍스트를 픽셀아트로 실시간 변환
-- 🎨 완전히 커스터마이징 가능한 스타일
-- 📏 여러 줄 텍스트 지원
-- ⚙️ 폰트 설정 (크기, 가족, 임계값)
-- 🔧 픽셀 크기, 색상, 그리드 설정
-- 🚀 간단하고 직관적인 API
+### 예제 및 문서 / Examples and Documentation
+- 🎛️ **인터랙티브 예제 앱** / **Interactive Example App** - 모든 설정을 실시간으로 조절 / Real-time adjustment of all settings
+- 📖 **상세한 문서** / **Detailed Documentation** - 설치부터 고급 사용법까지 / From installation to advanced usage
+- 🎮 **게임보이 스타일 데모** / **Game Boy Style Demo** - 레트로 감성의 완성형 예제 / Complete retro-style example 
