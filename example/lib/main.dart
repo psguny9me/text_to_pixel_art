@@ -334,6 +334,150 @@ class _PixelArtDemoPageState extends State<PixelArtDemoPage> {
                 ),
               ),
             ),
+
+            const SizedBox(height: 16),
+
+            // 게임보이 LCD 스타일 예제 섹션
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 게임보이 외관을 모방한 컨테이너
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.2),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 12),
+
+                          // LCD 화면
+                          Container(
+                            width: 280,
+                            height: 210,
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF8BAC0F), // 게임보이 LCD 배경색
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                  color: Colors.grey[600]!, width: 3),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.3),
+                                  blurRadius: 4,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF9BBD0F), // 밝은 LCD 배경
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    // 게임보이 스타일 텍스트 1
+                                    PixelTextWidget(
+                                      text: 'Hello',
+                                      fontConfig: const PixelFontConfig(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w100,
+                                        threshold: 70,
+                                        textColor: Color(0xFF0F380F),
+                                        //letterPixelWidth: 8,
+                                        //letterPixelHeight: 16,
+                                      ),
+                                      artStyle: const PixelArtStyle(
+                                        pixelSize: 3.0,
+                                        pixelColor: Color(0xFF0F380F), // 어두운 녹색
+                                        backgroundColor:
+                                            Color(0xFF9BBD0F), // 밝은 LCD 배경
+                                        pixelSpacing: 1.0, // 픽셀 간격
+                                        pixelOpacity: 0.9,
+                                        enableShadow: true,
+                                        showGrid: false,
+                                      ),
+                                    ),
+
+                                    const SizedBox(height: 16),
+
+                                    // 게임보이 스타일 텍스트 2
+                                    PixelTextWidget.multiLine(
+                                      text: 'PRESS START\n\nTO PLAY',
+                                      fontConfig: const PixelFontConfig(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.w100,
+                                        threshold: 70,
+                                        textColor: Color(0xFF0F380F),
+                                        letterPixelWidth: 6,
+                                        letterPixelHeight: 8,
+                                      ),
+                                      artStyle: const PixelArtStyle(
+                                        pixelSize: 2.0,
+                                        pixelColor: Color(0xFF0F380F),
+                                        backgroundColor: Color(0xFF9BBD0F),
+                                        pixelSpacing: 0.5,
+                                        pixelOpacity: 0.9,
+                                        enableShadow: true,
+                                        showGrid: false,
+                                      ),
+                                    ),
+
+                                    const SizedBox(height: 12),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 16),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // 설명 텍스트
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.grey[300]!),
+                      ),
+                      child: const Text(
+                        '📱 게임보이 LCD 스타일 특징:\n'
+                        '• 배경색: #9BBD0F (밝은 황록색)\n'
+                        '• 텍스트색: #0F380F (어두운 녹색)\n'
+                        '• 픽셀 간격으로 도트 매트릭스 효과\n'
+                        '• 고정 크기 폰트로 레트로 느낌 연출',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black87,
+                          height: 1.4,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 16),
           ],
         ),
       ),
