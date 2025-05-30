@@ -1,21 +1,11 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
 # Text to Pixel Art / 텍스트 픽셀아트
 
 Flutter에서 텍스트를 픽셀아트로 변환하는 패키지입니다. 다양한 레트로 스타일과 커스터마이징 옵션을 제공합니다.
 
 A Flutter package that converts text to pixel art with retro styling. Supports various customization options and retro styles.
+
+![화면 기록 2025-05-30 오후 2 54 21](https://github.com/user-attachments/assets/d298be5a-44bf-4162-a5fd-b03c336ca402)
+
 
 ## 🚀 멀티플랫폼 지원 / Multi-platform Support
 
