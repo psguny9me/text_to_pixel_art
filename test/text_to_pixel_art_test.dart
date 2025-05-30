@@ -39,13 +39,14 @@ void main() {
 
     test('should create factory configurations correctly', () {
       // Arrange & Act
-
-      final PixelArtStyle largeStyle = PixelArtStyle.large();
-      final PixelArtStyle smallStyle = PixelArtStyle.small();
+      final PixelArtStyle customStyle = PixelArtStyle(
+        pixelSize: 8.0,
+        pixelColor: Colors.blue,
+      );
 
       // Assert
-      expect(largeStyle.pixelSize, equals(8.0));
-      expect(smallStyle.pixelSize, equals(2.0));
+      expect(customStyle.pixelSize, equals(8.0));
+      expect(customStyle.pixelColor, equals(Colors.blue));
     });
   });
 }

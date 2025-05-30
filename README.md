@@ -28,337 +28,6 @@ Flutter에서 텍스트를 픽셀아트로 변환하는 패키지입니다. 다�
 
 순수 Dart/Flutter 위젯을 사용하므로 네이티브 플러그인 없이 모든 플랫폼에서 동일하게 작동합니다.
 
-## 특징
-
-- ✨ 텍스트를 픽셀아트로 변환
-- 🎮 다양한 레트로 스타일 (80년대 네온, 게임보이, CRT 모니터 등)
-- 🎨 커스터마이징 가능한 픽셀 크기, 색상, 간격
-- 🌟 그림자 효과 지원
-- 👻 픽셀 불투명도 조절 (반투명 효과)
-- ✏️ **얇은 폰트 지원** (1픽셀 두께의 섬세한 텍스트)
-- 📝 **향상된 멀티라인 지원** (여러 줄 텍스트 완벽 처리)
-- 📐 그리드 표시 옵션
-- 📱 멀티플랫폼 지원 (iOS, Android, Web, macOS, Windows, Linux)
-- 🔤 단일 줄 및 여러 줄 텍스트 지원
-
-## 설치
-
-`pubspec.yaml` 파일에 다음을 추가하세요:
-
-```yaml
-dependencies:
-  text_to_pixel_art: ^1.0.0
-```
-
-그리고 다음 명령어를 실행하세요:
-
-```bash
-flutter pub get
-```
-
-## 사용법
-
-### 기본 사용법
-
-#### 간단한 픽셀 텍스트
-
-```dart
-import 'package:text_to_pixel_art/text_to_pixel_art.dart';
-
-// 기본 픽셀 텍스트 (얇은 폰트 사용)
-PixelText.create(
-  text: 'HELLO',
-  pixelSize: 4.0,
-  pixelColor: Colors.black,
-)
-
-// 큰 크기 픽셀 텍스트
-PixelText.large(
-  text: 'BIG TEXT',
-  pixelColor: Colors.blue,
-)
-
-// 작은 크기 픽셀 텍스트
-PixelText.small(
-  text: 'small',
-  pixelColor: Colors.green,
-)
-```
-
-#### 1픽셀 두께의 얇은 폰트
-
-```dart
-// 매우 얇은 1픽셀 두께 텍스트
-PixelTextWidget(
-  text: 'THIN PIXEL',
-  fontConfig: PixelFontConfig.thin(),
-  artStyle: PixelArtStyle(
-    pixelSize: 4.0,
-    pixelColor: Colors.black,
-  ),
-)
-
-// 사용자 정의 얇은 폰트
-PixelTextWidget(
-  text: 'CUSTOM THIN',
-  fontConfig: PixelFontConfig.thin(
-    fontSize: 18.0,
-    textColor: Colors.blue,
-  ),
-  artStyle: PixelArtStyle(pixelSize: 3.0),
-)
-```
-
-#### 8x8 고정 크기 픽셀 폰트
-
-```dart
-// 각 글자가 정확히 8x8 픽셀로 렌더링
-PixelTextWidget(
-  text: 'RETRO',
-  fontConfig: PixelFontConfig.fixed8x8(),
-  artStyle: PixelArtStyle(
-    pixelSize: 4.0,
-    showGrid: true, // 8x8 격자 표시
-  ),
-)
-
-// 8x16 크기 (알파벳에 더 적합)
-PixelTextWidget(
-  text: 'HELLO',
-  fontConfig: PixelFontConfig.fixed8x16(),
-  artStyle: PixelArtStyle(
-    pixelSize: 3.0,
-    showGrid: true,
-  ),
-)
-
-// 6x8 작은 크기
-PixelTextWidget(
-  text: 'SMALL',
-  fontConfig: PixelFontConfig.fixed6x8(),
-  artStyle: PixelArtStyle(pixelSize: 5.0),
-)
-
-// 12x16 큰 크기
-PixelTextWidget(
-  text: 'BIG',
-  fontConfig: PixelFontConfig.fixed12x16(),
-  artStyle: PixelArtStyle(pixelSize: 2.0),
-)
-
-// 커스텀 고정 크기 (예: 12x16)
-PixelTextWidget(
-  text: 'CUSTOM',
-  fontConfig: PixelFontConfig.fixedSize(
-    letterWidth: 12,
-    letterHeight: 16,
-  ),
-  artStyle: PixelArtStyle(pixelSize: 3.0),
-)
-```
-
-#### 멀티라인 텍스트
-
-```dart
-// 여러 줄 텍스트 (자동 줄바꿈 처리)
-PixelTextWidget.multiLine(
-  text: 'HELLO\nWORLD\nPIXEL\nART',
-  fontConfig: PixelFontConfig.multiline(),
-  artStyle: PixelArtStyle(
-    pixelSize: 4.0,
-    pixelColor: Colors.purple,
-  ),
-)
-```
-
-#### 고급 설정
-
-```dart
-PixelTextWidget(
-  text: 'RETRO GAME',
-  fontConfig: PixelFontConfig(
-    fontSize: 24.0,
-    fontWeight: FontWeight.bold,
-    textColor: Colors.white,
-  ),
-  artStyle: PixelArtStyle(
-    pixelSize: 6.0,
-    pixelColor: Colors.cyan,
-    backgroundColor: Colors.black,
-    pixelSpacing: 1.0,
-    pixelOpacity: 0.8, // 불투명도 설정 (0.0 ~ 1.0)
-    enableShadow: true,
-    shadowColor: Colors.blue,
-    shadowOffset: Offset(2.0, 2.0),
-    shadowBlur: 3.0,
-    showGrid: true,
-  ),
-)
-```
-
-## 레트로 스타일 프리셋
-
-### 1. 80년대 네온 스타일
-```dart
-PixelTextWidget(
-  text: 'NEON 80s',
-  artStyle: PixelArtStyle.neon80s(),
-)
-```
-
-### 2. 게임보이 스타일
-```dart
-PixelTextWidget(
-  text: 'GAMEBOY',
-  artStyle: PixelArtStyle.gameboy(),
-)
-```
-
-### 3. CRT 모니터 스타일
-```dart
-PixelTextWidget(
-  text: 'CRT MONITOR',
-  artStyle: PixelArtStyle.crtMonitor(),
-)
-```
-
-### 4. 레트로 아케이드 스타일
-```dart
-PixelTextWidget(
-  text: 'ARCADE',
-  artStyle: PixelArtStyle.retroArcade(),
-)
-```
-
-### 5. 반투명 스타일
-```dart
-PixelTextWidget(
-  text: 'TRANSLUCENT',
-  artStyle: PixelArtStyle.translucent(
-    pixelOpacity: 0.6,
-  ),
-)
-```
-
-### 6. 글래스 효과 스타일
-```dart
-PixelTextWidget(
-  text: 'GLASS',
-  artStyle: PixelArtStyle.glass(),
-)
-```
-
-### 7. 홀로그램 효과 스타일
-```dart
-PixelTextWidget(
-  text: 'HOLOGRAM',
-  artStyle: PixelArtStyle.hologram(),
-)
-```
-
-## 색상 팔레트
-
-### 80년대 네온 컬러
-```dart
-RetroColors.neonPink      // #FF10F0
-RetroColors.neonBlue      // #00FFFF
-RetroColors.neonGreen     // #39FF14
-RetroColors.neonYellow    // #FFFF00
-RetroColors.neonOrange    // #FF6600
-RetroColors.neonPurple    // #9D00FF
-```
-
-### 게임보이 컬러
-```dart
-RetroColors.gameboyGreen       // #8BAC0F
-RetroColors.gameboyDarkGreen   // #306230
-RetroColors.gameboyLightGreen  // #9BBD0F
-RetroColors.gameboyBackground  // #0F380F
-```
-
-### CRT 모니터 컬러
-```dart
-RetroColors.crtGreen       // #00FF41
-RetroColors.crtAmber       // #FFB000
-RetroColors.crtWhite       // #FFFFFF
-RetroColors.crtBackground  // #000000
-```
-
-## 설정 옵션
-
-### PixelFontConfig
-
-| 속성 | 타입 | 기본값 | 설명 |
-|-----|------|-------|------|
-| fontSize | double | 16.0 | 폰트 크기 |
-| fontFamily | String? | null | 폰트 패밀리 |
-| fontWeight | FontWeight | FontWeight.w100 | 폰트 굵기 (기본: 가장 얇음) |
-| textColor | Color | Colors.black | 텍스트 색상 |
-| backgroundColor | Color | Colors.transparent | 배경 색상 |
-| threshold | double | 80 | 픽셀 변환 임계값 (더 민감함) |
-| antiAlias | bool | false | 안티앨리어싱 |
-| letterPixelWidth | int? | null | 글자당 픽셀 너비 (고정 크기) |
-| letterPixelHeight | int? | null | 글자당 픽셀 높이 (고정 크기) |
-
-#### Factory 생성자
-
-- `PixelFontConfig.thin()` - 1픽셀 두께의 매우 얇은 폰트 (threshold: 100)
-- `PixelFontConfig.normal()` - 일반 두께 폰트 (threshold: 128)
-- `PixelFontConfig.fixed6x8()` - 6x8 픽셀 고정 크기 폰트 (작은 크기)
-- `PixelFontConfig.fixed8x8()` - 8x8 픽셀 고정 크기 폰트 (기호용)
-- `PixelFontConfig.fixed8x16()` - 8x16 픽셀 고정 크기 폰트 (알파벳 권장)
-- `PixelFontConfig.fixed12x16()` - 12x16 픽셀 고정 크기 폰트 (큰 크기)
-- `PixelFontConfig.fixedSize()` - 커스텀 고정 크기 폰트
-- `PixelFontConfig.multiline()` - 멀티라인 텍스트에 최적화
-- `PixelFontConfig.monospace()` - 기본 모노스페이스 폰트
-- `PixelFontConfig.small()` - 작은 크기 폰트
-- `PixelFontConfig.large()` - 큰 크기 폰트
-
-#### 폰트 유형 비교
-
-```dart
-// 얇은 폰트 - 1픽셀 두께의 섬세한 텍스트
-PixelTextWidget(
-  text: 'THIN FONT',
-  fontConfig: PixelFontConfig.thin(),
-  artStyle: PixelArtStyle(pixelSize: 4.0),
-)
-
-// 일반 폰트 - 표준 두께 텍스트
-PixelTextWidget(
-  text: 'NORMAL FONT',
-  fontConfig: PixelFontConfig.normal(),
-  artStyle: PixelArtStyle(pixelSize: 4.0),
-)
-
-// 8x8 고정 크기 - 각 글자가 정확히 8x8 픽셀
-PixelTextWidget(
-  text: '8X8 FIXED',
-  fontConfig: PixelFontConfig.fixed8x8(),
-  artStyle: PixelArtStyle(
-    pixelSize: 4.0,
-    showGrid: true, // 격자 표시로 8x8 구조 확인
-  ),
-)
-```
-
-### PixelArtStyle
-
-| 속성 | 타입 | 기본값 | 설명 |
-|-----|------|-------|------|
-| pixelSize | double | 4.0 | 픽셀 크기 |
-| pixelColor | Color | Colors.black | 픽셀 색상 |
-| backgroundColor | Color | Colors.transparent | 배경 색상 |
-| pixelSpacing | double | 0.0 | 픽셀 간격 |
-| pixelOpacity | double | 1.0 | 픽셀 불투명도 (0.0 ~ 1.0) |
-| showGrid | bool | false | 그리드 표시 |
-| gridColor | Color | Colors.grey | 그리드 색상 |
-| gridLineWidth | double | 0.5 | 그리드 선 굵기 |
-| enableShadow | bool | false | 그림자 효과 |
-| shadowColor | Color | Colors.black54 | 그림자 색상 |
-| shadowOffset | Offset | Offset(1.0, 1.0) | 그림자 오프셋 |
-| shadowBlur | double | 2.0 | 그림자 블러 |
-
 ## 📱 플랫폼별 실행 방법
 
 ### Android/iOS
@@ -415,14 +84,426 @@ flutter run -d linux
 - `fontWeight`: 폰트 두께
 - `textColor`: 텍스트 색상
 - `backgroundColor`: 배경 색상
-- `threshold`: 픽셀 임계값 (기본값: 128)
+- `threshold`: 픽셀 임계값 (기본값: 80)
 - `useAntiAliasing`: 안티앨리어싱 사용 여부
+- `letterPixelWidth`: 글자당 픽셀 너비 (고정 크기)
+- `letterPixelHeight`: 글자당 픽셀 높이 (고정 크기)
 
-#### 팩토리 생성자
+#### 사용 예제
 
-- `PixelFontConfig.monospace()`: 모노스페이스 폰트
-- `PixelFontConfig.small()`: 작은 크기
-- `PixelFontConfig.large()`: 큰 크기
+```dart
+// 기본 설정
+PixelFontConfig()
+
+// 커스텀 설정
+PixelFontConfig(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  threshold: 100,
+  useAntiAliasing: true,
+)
+
+// 고정 크기 설정
+PixelFontConfig(
+  fontSize: 16.0,
+  letterPixelWidth: 8,
+  letterPixelHeight: 16,
+  threshold: 70,
+)
+```
+
+## 특징
+
+- ✨ 텍스트를 픽셀아트로 변환
+- 🎮 게임보이 LCD 스타일 예제 (도트 매트릭스 효과)
+- 🎨 완전 커스터마이징 가능한 픽셀 크기, 색상, 간격
+- 🌟 그림자 효과 지원
+- 👻 픽셀 불투명도 조절 (반투명 효과)
+- 📐 고정 크기 폰트 지원 (8x8, 8x16 등)
+- 📝 향상된 멀티라인 지원 (여러 줄 텍스트 완벽 처리)
+- 🔧 실시간 설정 조정 가능한 예제 앱
+- 📱 멀티플랫폼 지원 (iOS, Android, Web, macOS, Windows, Linux)
+- 🔤 단일 줄 및 여러 줄 텍스트 지원
+
+## 설치
+
+`pubspec.yaml` 파일에 다음을 추가하세요:
+
+```yaml
+dependencies:
+  text_to_pixel_art: ^1.0.0
+```
+
+그리고 다음 명령어를 실행하세요:
+
+```bash
+flutter pub get
+```
+
+## 사용법
+
+### 기본 사용법
+
+#### 간단한 픽셀 텍스트
+
+```dart
+import 'package:text_to_pixel_art/text_to_pixel_art.dart';
+
+// 기본 픽셀 텍스트
+PixelText.create(
+  text: 'HELLO',
+  pixelSize: 4.0,
+  pixelColor: Colors.black,
+)
+
+// 큰 크기 픽셀 텍스트
+PixelText.large(
+  text: 'BIG TEXT',
+  pixelColor: Colors.blue,
+)
+
+// 작은 크기 픽셀 텍스트
+PixelText.small(
+  text: 'small',
+  pixelColor: Colors.green,
+)
+```
+
+#### 커스터마이징 가능한 픽셀 텍스트
+
+```dart
+// 완전 커스터마이징 가능한 픽셀 텍스트
+PixelTextWidget(
+  text: 'CUSTOM',
+  fontConfig: PixelFontConfig(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w100,
+    threshold: 80,
+    useAntiAliasing: false,
+  ),
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    pixelColor: Colors.blue,
+    pixelSpacing: 1.0,
+    pixelOpacity: 0.9,
+    enableShadow: true,
+  ),
+)
+```
+
+#### 고정 크기 픽셀 폰트
+
+```dart
+// 각 글자가 정확히 8x8 픽셀로 렌더링
+PixelTextWidget(
+  text: 'RETRO',
+  fontConfig: PixelFontConfig(
+    fontSize: 16.0,
+    letterPixelWidth: 8,
+    letterPixelHeight: 8,
+  ),
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    showGrid: true, // 8x8 격자 표시
+  ),
+)
+
+// 8x16 크기 (알파벳에 더 적합)
+PixelTextWidget(
+  text: 'HELLO',
+  fontConfig: PixelFontConfig(
+    fontSize: 18.0,
+    letterPixelWidth: 8,
+    letterPixelHeight: 16,
+  ),
+  artStyle: PixelArtStyle(
+    pixelSize: 3.0,
+    showGrid: true,
+  ),
+)
+
+// 커스텀 고정 크기
+PixelTextWidget(
+  text: 'CUSTOM',
+  fontConfig: PixelFontConfig(
+    fontSize: 20.0,
+    letterPixelWidth: 12,
+    letterPixelHeight: 16,
+  ),
+  artStyle: PixelArtStyle(pixelSize: 3.0),
+)
+```
+
+#### 멀티라인 텍스트
+
+```dart
+// 여러 줄 텍스트 (자동 줄바꿈 처리)
+PixelTextWidget.multiLine(
+  text: 'HELLO\nWORLD\nPIXEL\nART',
+  fontConfig: PixelFontConfig(
+    fontSize: 16.0,
+    fontWeight: FontWeight.w100,
+  ),
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    pixelColor: Colors.purple,
+  ),
+)
+```
+
+#### 🎮 게임보이 LCD 스타일 예제
+
+```dart
+// 게임보이 LCD 스타일 텍스트
+Container(
+  padding: EdgeInsets.all(16),
+  decoration: BoxDecoration(
+    color: Color(0xFF9BBD0F), // 게임보이 LCD 배경색
+    borderRadius: BorderRadius.circular(8),
+    border: Border.all(color: Colors.grey[600]!, width: 3),
+  ),
+  child: Column(
+    children: [
+      // 메인 텍스트
+      PixelTextWidget(
+        text: 'Hello',
+        fontConfig: PixelFontConfig(
+          fontSize: 16.0,
+          fontWeight: FontWeight.w100,
+          threshold: 70,
+          textColor: Color(0xFF0F380F), // 어두운 녹색
+        ),
+        artStyle: PixelArtStyle(
+          pixelSize: 3.0,
+          pixelColor: Color(0xFF0F380F),
+          backgroundColor: Color(0xFF9BBD0F),
+          pixelSpacing: 1.0, // 도트 매트릭스 효과
+          pixelOpacity: 0.9,
+          enableShadow: true,
+        ),
+      ),
+      
+      SizedBox(height: 16),
+      
+      // 서브 텍스트 (멀티라인)
+      PixelTextWidget.multiLine(
+        text: 'PRESS START\n\nTO PLAY',
+        fontConfig: PixelFontConfig(
+          fontSize: 14.0,
+          fontWeight: FontWeight.w100,
+          threshold: 70,
+          textColor: Color(0xFF0F380F),
+          letterPixelWidth: 6,
+          letterPixelHeight: 8,
+        ),
+        artStyle: PixelArtStyle(
+          pixelSize: 2.0,
+          pixelColor: Color(0xFF0F380F),
+          backgroundColor: Color(0xFF9BBD0F),
+          pixelSpacing: 0.5,
+          pixelOpacity: 0.9,
+          enableShadow: true,
+        ),
+      ),
+    ],
+  ),
+)
+```
+
+#### 고급 설정
+
+```dart
+PixelTextWidget(
+  text: 'RETRO GAME',
+  fontConfig: PixelFontConfig(
+    fontSize: 24.0,
+    fontWeight: FontWeight.bold,
+    textColor: Colors.white,
+    threshold: 128,
+    useAntiAliasing: false,
+  ),
+  artStyle: PixelArtStyle(
+    pixelSize: 6.0,
+    pixelColor: Colors.cyan,
+    backgroundColor: Colors.black,
+    pixelSpacing: 1.0,
+    pixelOpacity: 0.8, // 불투명도 설정 (0.0 ~ 1.0)
+    enableShadow: true,
+    shadowColor: Colors.blue,
+    shadowOffset: Offset(2.0, 2.0),
+    shadowBlur: 3.0,
+    showGrid: true,
+  ),
+)
+```
+
+## 레트로 스타일 예제
+
+### 80년대 네온 스타일
+```dart
+PixelTextWidget(
+  text: 'NEON 80s',
+  artStyle: PixelArtStyle(
+    pixelSize: 6.0,
+    pixelColor: Color(0xFFFF10F0), // 네온 핑크
+    backgroundColor: Color(0xFF2D1B69), // 어두운 보라
+    pixelSpacing: 1.0,
+    enableShadow: true,
+    shadowColor: Color(0xFFFF10F0).withValues(alpha: 0.5),
+    shadowOffset: Offset(2.0, 2.0),
+    shadowBlur: 4.0,
+  ),
+)
+```
+
+### 게임보이 스타일
+```dart
+PixelTextWidget(
+  text: 'GAMEBOY',
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    pixelColor: Color(0xFF8BAC0F), // 게임보이 녹색
+    backgroundColor: Color(0xFF0F380F), // 어두운 녹색
+    pixelSpacing: 0.5,
+    enableShadow: true,
+    shadowColor: Color(0xFF306230), // 게임보이 어두운 녹색
+    shadowOffset: Offset(1.0, 1.0),
+    shadowBlur: 1.0,
+  ),
+)
+```
+
+### CRT 모니터 스타일
+```dart
+PixelTextWidget(
+  text: 'CRT MONITOR',
+  artStyle: PixelArtStyle(
+    pixelSize: 5.0,
+    pixelColor: Color(0xFF00FF41), // CRT 녹색
+    backgroundColor: Color(0xFF000000), // 검정 배경
+    pixelSpacing: 0.5,
+    enableShadow: true,
+    shadowColor: Color(0xFF00FF41).withValues(alpha: 0.3),
+    shadowOffset: Offset(0.5, 0.5),
+    shadowBlur: 3.0,
+    showGrid: true,
+    gridColor: Color(0xFF00FF41).withValues(alpha: 0.1),
+    gridLineWidth: 0.3,
+  ),
+)
+```
+
+### 레트로 아케이드 스타일
+```dart
+PixelTextWidget(
+  text: 'ARCADE',
+  artStyle: PixelArtStyle(
+    pixelSize: 6.0,
+    pixelColor: Color(0xFF00FFFF), // 네온 블루
+    backgroundColor: Color(0xFF0F0F23), // 어두운 블루
+    pixelSpacing: 1.5,
+    enableShadow: true,
+    shadowColor: Colors.black87,
+    shadowOffset: Offset(2.0, 2.0),
+    shadowBlur: 3.0,
+  ),
+)
+```
+
+### 반투명 스타일
+```dart
+PixelTextWidget(
+  text: 'TRANSLUCENT',
+  artStyle: PixelArtStyle(
+    pixelSize: 4.0,
+    pixelColor: Colors.black,
+    backgroundColor: Colors.white,
+    pixelOpacity: 0.6,
+  ),
+)
+```
+
+### 글래스 효과 스타일
+```dart
+PixelTextWidget(
+  text: 'GLASS',
+  artStyle: PixelArtStyle(
+    pixelSize: 6.0,
+    pixelColor: Colors.cyan,
+    backgroundColor: Colors.blueGrey,
+    pixelOpacity: 0.7,
+    pixelSpacing: 1.0,
+    enableShadow: true,
+    shadowColor: Colors.black26,
+    shadowOffset: Offset(1.5, 1.5),
+    shadowBlur: 2.0,
+  ),
+)
+```
+
+### 홀로그램 효과 스타일
+```dart
+PixelTextWidget(
+  text: 'HOLOGRAM',
+  artStyle: PixelArtStyle(
+    pixelSize: 5.0,
+    pixelColor: Color(0xFF00FFFF), // 네온 블루
+    backgroundColor: Colors.black,
+    pixelOpacity: 0.8,
+    pixelSpacing: 0.5,
+    enableShadow: true,
+    shadowColor: Color(0xFF00FFFF).withValues(alpha: 0.3),
+    shadowOffset: Offset(1.0, 1.0),
+    shadowBlur: 4.0,
+    showGrid: true,
+    gridColor: Color(0xFF00FFFF).withValues(alpha: 0.1),
+    gridLineWidth: 0.2,
+  ),
+)
+```
+
+## 설정 옵션
+
+### PixelFontConfig
+
+폰트 설정을 관리하는 클래스입니다.
+
+#### 속성
+
+| 속성 | 타입 | 기본값 | 설명 |
+|-----|------|-------|------|
+| fontSize | double | 16.0 | 폰트 크기 |
+| fontFamily | String | 'monospace' | 폰트 패밀리 |
+| fontWeight | FontWeight | FontWeight.w100 | 폰트 굵기 |
+| textColor | Color | Colors.black | 텍스트 색상 |
+| backgroundColor | Color | Colors.transparent | 배경 색상 |
+| threshold | int | 80 | 픽셀 변환 임계값 |
+| useAntiAliasing | bool | false | 안티앨리어싱 사용 여부 |
+| letterPixelWidth | int? | null | 글자당 픽셀 너비 (고정 크기) |
+| letterPixelHeight | int? | null | 글자당 픽셀 높이 (고정 크기) |
+
+#### 사용 예제
+
+```dart
+// 기본 설정
+PixelFontConfig()
+
+// 커스텀 설정
+PixelFontConfig(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  threshold: 100,
+  useAntiAliasing: true,
+)
+
+// 고정 크기 설정
+PixelFontConfig(
+  fontSize: 16.0,
+  letterPixelWidth: 8,
+  letterPixelHeight: 16,
+  threshold: 70,
+)
+```
 
 ### PixelArtStyle
 
@@ -433,16 +514,31 @@ flutter run -d linux
 - `pixelSize`: 픽셀 크기 (기본값: 4.0)
 - `pixelColor`: 픽셀 색상
 - `backgroundColor`: 배경 색상
+- `pixelSpacing`: 픽셀 간격 (기본값: 0.0)
+- `pixelOpacity`: 픽셀 불투명도 (기본값: 1.0)
 - `showGrid`: 그리드 표시 여부
 - `gridColor`: 그리드 색상
 - `gridLineWidth`: 그리드 선 두께
+- `enableShadow`: 그림자 효과 활성화
+- `shadowColor`: 그림자 색상
+- `shadowOffset`: 그림자 오프셋
+- `shadowBlur`: 그림자 블러
 
-#### 팩토리 생성자
+#### 사용 예제
 
-- `PixelArtStyle.defaultStyle()`: 기본 스타일
-- `PixelArtStyle.large()`: 큰 픽셀
-- `PixelArtStyle.small()`: 작은 픽셀
-- `PixelArtStyle.withGrid()`: 그리드 포함
+```dart
+// 기본 스타일
+PixelArtStyle()
+
+// 커스텀 스타일
+PixelArtStyle(
+  pixelSize: 6.0,
+  pixelColor: Colors.blue,
+  backgroundColor: Colors.black,
+  showGrid: true,
+  enableShadow: true,
+)
+```
 
 ### PixelText
 
@@ -465,10 +561,11 @@ flutter run
 
 예제 앱에서는 다음을 확인할 수 있습니다:
 - 📝 실시간 텍스트 입력 및 변환
-- 🎛️ 모든 설정 옵션 조절
-- 🎨 레트로 스타일 갤러리
-- 👻 불투명도 효과 데모
-- 🌈 색상 팔레트 미리보기
+- 🎛️ 모든 설정 옵션 조절 (폰트 크기, 픽셀 크기, 불투명도, 그림자 등)
+- 🎮 게임보이 LCD 스타일 데모 (도트 매트릭스 효과)
+- 🔧 완전 커스터마이징 가능한 픽셀아트 생성
+- 📱 고정 크기 폰트 옵션 (8x8, 8x16 등)
+- 🌈 다양한 색상과 효과 옵션
 
 ## 요구 사항
 
