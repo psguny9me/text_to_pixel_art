@@ -189,6 +189,12 @@ class _PixelTextWidgetState extends State<PixelTextWidget> {
         showGrid: widget.artStyle.showGrid,
         gridColor: widget.artStyle.gridColor,
         gridLineWidth: widget.artStyle.gridLineWidth,
+        pixelSpacing: widget.artStyle.pixelSpacing,
+        enableShadow: widget.artStyle.enableShadow,
+        shadowColor: widget.artStyle.shadowColor,
+        shadowOffset: widget.artStyle.shadowOffset,
+        shadowBlur: widget.artStyle.shadowBlur,
+        pixelOpacity: widget.artStyle.pixelOpacity,
       ),
     );
   }
